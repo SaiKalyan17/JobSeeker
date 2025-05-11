@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.thymeleaf.org" th:replace="base::layout(~{::div})">
+<head>
+<title>Online Job Portal - Home</title>
+</head>
+<style>
+	
+</style>
+
+<body >
+	<!-- Alert box -->
+	<div th:if="${status}"
+		class="alert alert-info alert-dismissible fade show text-center"
+		role="alert">
+		<strong th:text="${status}"></strong>
+		<button type="button" class="btn-close" data-bs-dismiss="alert"
+			aria-label="Close"></button>
+	</div>
+
+
+	<div class="container">
+		<div class="image-container">
+		<img class="bg-image" 
+		src="img/4714188.jpg" style=" width: 400px; height: 400px; margin-top:120px; border-radius: 100px; margin-left: 450px; ">
+		</div>
+		<h1 class="display-4 text-center mt-5 mb-2" style =
+		 "
+		 font-size: 38px;
+		 font-weight:700; 
+		 color: black;
+		 background-color: #d8b89e; 
+		 margin-left: 100px;  margin-right: 100px; ;
+		 border-radius:50px ;
+		 padding: 10px;
+		 ">Welcome to Online Job Portal</h1>
+		
+		<pre>
+					
+					</pre>
+		<p class="lead mt-2" style="
+		letter-spacing: 0.09cap;  font-weight:500; background-color:#7a3737; padding: 20px; border-radius: 65px; color: white;">
+		At Online Job Portal, we bridge the gap between
+			talented professionals and leading employers. Whether you're on the
+			hunt for your dream job or seeking the ideal candidate to join your
+			team, our platform offers a seamless and efficient experience. With a
+			diverse range of job listings and comprehensive candidate profiles,
+			you can explore opportunities and to make your connections that will elevate
+			your career or business. Join us today and take the next step towards
+			achieving your all time professional goals.</p>
+			<pre>
+				
+				
+				
+			</pre>
+			
+			
+	</div>
+	
+	
+	
+	<!-- Features section -->
+	
+	
+	
+	<section class="bg-light py-5 mt-5">
+	    <div class="container">
+	        <h1 class="text-center mb-5" 
+			style = "color:black; 
+			background-color: #d8b89e; 
+			margin-left: 300px;  margin-right: 300px; margin-bottom: 30px;
+			border-radius:50px ;
+			padding: 10px;
+			font-weight:700; 
+			">Features</h1>
+			
+			
+	        <div class="row text-center">
+	            <div class="col-md-4 mb-4" style=" font-size: 18px;letter-spacing: 0.09cap; font-weight:500;color: white;background-color: #7a3737; padding: 20px; border-radius: 70px;">
+	                <a href="/job-list" style="text-decoration: none; color: #000;">
+	                    <h4 style="color:#f5e1b5 ;">Job Listings</h4>
+	                </a>
+	                <p>Browse and apply for job opportunities from top companies.</p>
+	            </div>
+	            <div class="col-md-4 mb-4" style="  font-size: 18px;letter-spacing: 0.09cap;font-weight:500;color: white;background-color: #7a3737; padding: 20px; border-radius: 70px;">
+	                <a href="/candidates" style="text-decoration: none; color: #000;">
+	                    <h4 style="color: #f5e1b5;">Candidate Profiles</h4>
+	                </a>
+	                <p>Create and showcase your professional profile to attract recruiters.</p>
+	            </div>
+	            <div class="col-md-4 mb-4" style=" letter-spacing: 0.09cap;  font-size: 18px; font-weight:500; color: white;padding: 20px; border-radius: 70px; background-color: #7a3737;">
+	                <a href="/schedule-interviews" style="text-decoration:none; color: #000;">
+	                    <h4 style="color: #f5e1b5;">Tools</h4>
+	                </a>
+	                <p  >Access powerful tools to manage and find the best talent.</p>
+	            </div>
+	        </div>
+	    </div>
+	</section>
+
+
+	<!-- Testimonial Start -->
+	<div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+	    <div class="container" style="  letter-spacing: 0.09cap;  font-size: 18px; font-weight:500;">
+	        <h1 class="text-center mb-5" style = 
+			"background-color:#d8b89e; 
+			color: #000;
+			border-radius:50px ;
+			padding: 10px; 
+			margin-left: 300px;  margin-right: 300px;
+			font-weight:700; 
+			
+			">Our Clients Say!!!</h1>
+	        <div class="owl-carousel testimonial-carousel"  >
+	            <div class="testimonial-item bg-light rounded p-4" style="margin: 10px; border-radius: 15px;">
+	                <i class="bi bi-emoji-smile-fill"></i>
+	                <p>Thanks to JobTimes, I was able to find my dream job! The user-friendly interface and the vast number of job postings made the job search process so much easier. I highly recommend this site to anyone looking for a job.</p>
+	                <div class="d-flex align-items-center" >
+	                    <img class="img-fluid flex-shrink-0 rounded" src="img/testimonial-1.jpg" style="width: 50px; height: 50px; ">
+	                    <div class="ps-3">
+	                        <h5 class="mb-1">Ralasi</h5>
+	                        <small>Software Engineer</small>
+	                    </div>
+	                </div>
+	            </div>
+	            <div class="testimonial-item bg-light rounded p-4" style="background-color: #d1ecf1; margin: 10px; border-radius: 15px;">
+	                <i class="bi bi-emoji-smile-fill"></i>
+	                <p>I've been using this job portal for a few months now, and I'm really impressed with the quality of the job postings. I've applied to several positions and have already landed a few interviews. The site is easy to navigate, and I appreciate the personalized job recommendations based on my search history.</p>
+	                <div class="d-flex align-items-center">
+	                    <img class="img-fluid flex-shrink-0 rounded" src="img/testimonial-2.jpg" style="width: 50px; height: 50px;">
+	                    <div class="ps-3">
+	                        <h5 class="mb-1">Jack</h5>
+	                        <small>Graphic Designer</small>
+	                    </div>
+	                </div>
+	            </div>
+	            <div class="testimonial-item bg-light rounded p-4" style="background-color: #d4edda; margin: 10px; border-radius: 15px;">
+	                <i class="bi bi-emoji-smile-fill"></i>
+	                <p>This job portal helped me find a job that matched my skills and experience perfectly. The process was straightforward, and I appreciated the ability to filter job postings by location and job type. The site also provided helpful tips on how to improve my resume and cover letter.</p>
+	                <div class="d-flex align-items-center">
+	                    <img class="img-fluid flex-shrink-0 rounded" src="img/testimonial-3.jpg" style="width: 50px; height: 50px;">
+	                    <div class="ps-3">
+	                        <h5 class="mb-1">Mick</h5>
+	                        <small>Sales Manager</small>
+	                    </div>
+	                </div>
+	            </div>
+				
+	        </div>
+	    </div>
+	</div>
+
+	<!-- Add CSS in the <style> tag -->
+	<style>
+	    .testimonial-item {
+	        transition: transform 0.3s ease, box-shadow 0.3s ease;
+	    }
+
+	    .testimonial-item:hover {
+	        transform: translateY(-10px);
+	        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	    }
+
+	    .owl-carousel {
+	        display: grid;
+	        grid-template-columns: repeat(3, 1fr);
+	        gap: 50px;
+			
+	    }
+
+	    .testimonial-item {
+	        padding: 20px;
+	        border-radius: 50px;
+	    }
+
+	    @media screen and (max-width: 768px) {
+	        .owl-carousel {
+	            grid-template-columns: 1fr; /* Single column on small screens */
+	        }
+	    }
+	</style>
+
+				
+				
+
+	<!-- Footer -->
+	
+
+</body>
+</html>

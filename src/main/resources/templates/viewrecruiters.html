@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.thymeleaf.org" th:replace="base::layout(~{::div})">
+<head>
+    <title>View Recruiters</title>
+</head>
+<body>
+
+<div class="container my-5">
+    <h3 class="text-center mb-4">Recruiters List</h3>
+
+    <!-- Display recruiters if available -->
+    <div class="row">
+        <div class="col-md-12">
+            <div th:if="${recruiters != null and !#lists.isEmpty(recruiters)}">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Contact</th>
+                            <th>Company Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="recruiter : ${recruiters}">
+                            <td th:text="${recruiter.id}">1</td>
+                            <td th:text="${recruiter.name}">Jane Smith</td>
+                            <td th:text="${recruiter.email}">jane.smith@example.com</td>
+                            <td th:text="${recruiter.contact}">987-654-3210</td>
+                            <td th:text="${recruiter.companyName != null ? recruiter.companyName : 'Not Provided'}">Company Name</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div th:if="${recruiters == null or #lists.isEmpty(recruiters)}" class="alert alert-info" role="alert">
+                No recruiters found.
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

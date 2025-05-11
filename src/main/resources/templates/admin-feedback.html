@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Feedback</title>
+</head>
+<body>
+    <h2>All Feedbacks</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Role</th>
+                <th>Feedback</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="feedback : ${feedbacks}">
+                <td th:text="${feedback.id}"></td>
+                <td th:text="${feedback.name}"></td>
+                <td th:text="${feedback.role}"></td>
+                <td th:text="${feedback.feedback}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

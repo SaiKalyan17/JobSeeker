@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.thymeleaf.org" th:replace="base::layout(~{::div})">
+<head>
+    <title>View Candidates</title>
+</head>
+<body>
+
+<div class="container my-5">
+    <h3 class="text-center mb-4">Candidates List</h3>
+
+    <!-- Display candidates if available -->
+    <div class="row">
+        <div class="col-md-12">
+            <div th:if="${candidates != null and !#lists.isEmpty(candidates)}">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Contact</th>
+                            <th>Skill Set</th>
+                            <th>Qualification</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="candidate : ${candidates}">
+                            <td th:text="${candidate.id}">1</td>
+                            <td th:text="${candidate.name}">John Doe</td>
+                            <td th:text="${candidate.email}">john.doe@example.com</td>
+                            <td th:text="${candidate.contact}">123-456-7890</td>
+                            <td th:text="${candidate.skillSet != null ? candidate.skillSet : 'Not Provided'}">Skill Set</td>
+                            <td th:text="${candidate.qualification != null ? candidate.qualification : 'Not Provided'}">Qualification</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div th:if="${candidates == null or #lists.isEmpty(candidates)}" class="alert alert-info" role="alert">
+                No candidates found.
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.thymeleaf.org" th:replace="base::layout(~{::div})">
+<head>
+<title>Scheduled Interviews</title>
+</head>
+<body>
+
+	<div class="container my-5 p-5" style="border: 1px solid black;">
+		<h4 class="text-center">Scheduled Interviews</h4>
+
+		<!-- Display status message -->
+		<div th:if="${status != null}" class="alert alert-info" role="alert"
+			th:text="${status}"></div>
+
+		<!-- Display interviews if available -->
+		<div class="row">
+			<div class="col-md-12">
+				<div th:if="${interviews != null and !#lists.isEmpty(interviews)}">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>Candidate Name</th>
+								<th>Candidate Email</th>
+								<th>Candidate Contact</th>
+								<th>Interview Date & Time</th>
+								<th>Status</th>
+								<th>Offer Letter Sent</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="interview : ${interviews}">
+								<td th:text="${interview.candidate.name}">Candidate Name</td>
+								<td th:text="${interview.candidate.email}">Candidate Email</td>
+								<td th:text="${interview.candidate.contact}">Candidate
+									Contact</td>
+								<td th:text="${interview.dateTime}">Interview Date & Time</td>
+								<td th:text="${interview.status}">Status</td>
+								<td th:text="${interview.isOfferLetterSent}">Offer Letter
+									Sent</td>
+								<td>
+									<!-- Action buttons based on interview status -->
+									<div th:switch="${interview.status}">
+										<!-- Show buttons if status is 'Pending' -->
+										<div th:case="'Pending'">
+											<a href="#"
+												th:href="@{/update-interview-status(interviewId=${interview.id}, status='Rejected')}"
+												class="btn btn-danger btn-sm">Reject</a> <a href="#"
+												th:href="@{/update-interview-status(interviewId=${interview.id}, status='Selected')}"
+												class="btn btn-success btn-sm">Select</a>
+										</div>
+
+										<!-- Show button to send offer letter if status is 'Selected' -->
+										<div th:case="'Selected'">
+											<a href="#"
+												th:href="@{/send-offer-letter(interviewId=${interview.id})}"
+												class="btn btn-primary btn-sm">Send Offer Letter</a>
+										</div>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div th:if="${interviews == null or #lists.isEmpty(interviews)}"
+					class="alert alert-info" role="alert">No interviews
+					scheduled.</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

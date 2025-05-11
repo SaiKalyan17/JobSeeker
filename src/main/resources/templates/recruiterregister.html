@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.thymeleaf.org" th:replace="base::layout(~{::div})">
+<head>
+<title>Recruiter Register</title>
+</head>
+<body>
+
+	<div class="container my-5 p-5" style="border: 1px solid black;">
+		<h4 class="text-center">Recruiter Register</h4>
+		<form class="col-md-4 offset-md-4" th:action="@{/recruiterregister}"
+			method="post">
+			<div class="mb-3">
+				<label for="name" class="form-label">Name </label> <input
+					type="text" class="form-control" name="name">
+			</div>
+
+			<div class="mb-3">
+				<label for="author" class="form-label">Email </label> <input
+					type="email" class="form-control" name="email">
+			</div>
+			<div class="mb-3">
+				<label for="price" class="form-label">Password </label> <input
+					type="password" class="form-control" name="password">
+			</div>
+			<div class="mb-3">
+				<label for="name" class="form-label">Contact </label> <input
+					type="text" class="form-control" name="contact">
+			</div>
+	
+			<div class="mb-3">
+				<label for="name" class="form-label">Company Name </label> <input
+					type="text" class="form-control" name="companyName">
+			</div>
+			<center>
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</center>
+		</form>
+	</div>
+
+
+
+</body>
+</html>

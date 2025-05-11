@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.thymeleaf.org" th:replace="base::layout(~{::div})">
+<head>
+<title>Update Skill Set</title>
+</head>
+<body>
+
+	<div class="container my-5 p-5" style="border: 1px solid black;">
+		<h4 class="text-center">Update Skill Set</h4>
+		<form class="col-md-4 offset-md-4" th:action="@{/updateSkill}"
+			>
+
+
+			<div class="mb-3">
+				<label for="author" class="form-label">Skill Set </label> <input
+					type="text" class="form-control" name="skill">
+			</div>
+
+
+			<center>
+				<button type="submit" class="btn btn-primary">Update</button>
+			</center>
+		</form>
+	</div>
+
+
+
+</body>
+</html>

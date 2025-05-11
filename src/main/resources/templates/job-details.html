@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:fragment="layout(content)">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Job Times</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+	crossorigin="anonymous">
+
+<link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg bg-body-tertiary">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="/">Job Portal</a>
+				<button class="navbar-toggler" type="button"
+					data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+					aria-controls="navbarSupportedContent" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+						<li class="nav-item"><a class="nav-link active"
+							aria-current="page" href="/aboutus">About Us</a></li>
+
+						<li class="nav-item"><a class="nav-link active"
+							aria-current="page" href="/candidates">Search Candidates</a></li>
+					</ul>
+
+
+
+					<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+						<!-- Dynamic content based on session attribute -->
+						<li class="nav-item" th:if="${session.userlogin == 'admin'}">
+							<a class="nav-link active" aria-current="page"
+							href="/viewcandidates">View Candidates</a>
+						</li>
+
+						<li class="nav-item" th:if="${session.userlogin == 'admin'}">
+							<a class="nav-link active" aria-current="page"
+							href="/viewrecruiters">View Recruiters</a>
+						</li>
+
+						<li class="nav-item" th:if="${session.userlogin == 'admin'}">
+							<a class="nav-link active" aria-current="page"
+							href="/viewallinterviews">View Scheduled Interviews</a>
+						</li>
+
+						<li class="nav-item" th:if="${session.userlogin == 'recruiter'}">
+							<a class="nav-link active" aria-current="page"
+							href="/schedule-interviews">View Scheduled Interviews</a>
+						</li>
+
+						<li class="nav-item" th:if="${session.userlogin == 'candidate'}">
+							<a class="nav-link active" aria-current="page"
+							href="/addqualification">Add Qualification</a>
+						</li>
+
+						<li class="nav-item" th:if="${session.userlogin == 'candidate'}">
+							<a class="nav-link active" aria-current="page" href="/updateskill">Udpate
+								Skill Set</a>
+						</li>
+
+						<li class="nav-item" th:if="${session.userlogin == 'candidate'}">
+							<a class="nav-link active" aria-current="page"
+							href="/candidateprofile">My Profile</a>
+						</li>
+
+						<li class="nav-item" th:if="${session.userlogin == null}"><a
+							class="nav-link active" aria-current="page"
+							href="/recruiterregister">Register Recruiter</a></li>
+
+						<li class="nav-item" th:if="${session.userlogin == null}"><a
+							class="nav-link active" aria-current="page"
+							href="/candidateregister">Register Candidate</a></li>
+
+						<li class="nav-item" th:if="${session.userlogin == null}"><a
+							class="nav-link active" aria-current="page" href="/candidatelogin">Candidate
+								Login</a></li>
+
+						<li class="nav-item" th:if="${session.userlogin == null}"><a
+							class="nav-link active" aria-current="page" href="/recruiterlogin">Recruiter
+								Login</a></li>
+
+						<li class="nav-item" th:if="${session.userlogin != null}"><a
+							class="nav-link active" aria-current="page" href="/logout">Logout</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		
+		<div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+		            <div class="container">
+		                <div class="row gy-5 gx-4">
+		                    <div class="col-lg-8">
+		                        <div class="d-flex align-items-center mb-5">
+		                            <img class="flex-shrink-0 img-fluid border rounded" src="img/com-logo-2.jpg" alt="" style="width: 80px; height: 80px;">
+		                            <div class="text-start ps-4">
+		                                <h3 class="mb-3">Marketing Manager</h3>
+		                                <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>Bhubaneswar,India</span>
+		                                <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i>Full Time</span>
+		                                <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i>Rs40,000-Rs1,00,000</span>
+		                            </div>
+		                        </div>
+
+		                        <div class="mb-5">
+		                            <h4 class="mb-3">Job description</h4>
+		                            <p>The Marketing Manager will be responsible for developing and implementing marketing strategies to promote our company's products and services. The successful candidate will lead a team of marketing professionals and work closely with cross-functional teams to develop and execute campaigns that will drive brand awareness, engagement, and revenue growth.</p>
+		                            <h4 class="mb-3">Responsibility</h4>
+		                            <!-- <p>Magna et elitr diam sed lorem. Diam diam stet erat no est est. Accusam sed lorem stet voluptua sit sit at stet consetetur, takimata at diam kasd gubergren elitr dolor</p> -->
+		                            <ul class="list-unstyled">
+		                                <li><i class="fa fa-angle-right text-primary me-2"></i>Develop and execute comprehensive marketing plans and strategies to achieve company goals and objectives.</li>
+		                                <li><i class="fa fa-angle-right text-primary me-2"></i>Lead the development and implementation of marketing campaigns across multiple channels, including social media, email marketing, advertising, events, and PR.</li>
+		                                <li><i class="fa fa-angle-right text-primary me-2"></i>Create and manage the marketing budget, ensuring maximum return on investment.</li>
+		                                <li><i class="fa fa-angle-right text-primary me-2"></i>Manage and mentor a team of marketing professionals to deliver high-quality campaigns and content that align with the company's vision and goals.</li>
+		                                <li><i class="fa fa-angle-right text-primary me-2"></i>Collaborate with cross-functional teams, including sales, product development, and customer service, to ensure marketing initiatives are integrated with business strategies and objectives.</li>
+		                            </ul>
+		                            <h4 class="mb-3">Qualifications</h4>
+		                            <!-- <p>Magna et elitr diam sed lorem. Diam diam stet erat no est est. Accusam sed lorem stet voluptua sit sit at stet consetetur, takimata at diam kasd gubergren elitr dolor</p> -->
+		                            <ul class="list-unstyled">
+		                                <li><i class="fa fa-angle-right text-primary me-2"></i>Bachelor's degree in Marketing, Business, or a related field.</li>
+		                                <li><i class="fa fa-angle-right text-primary me-2"></i>5+ years of experience in marketing, with at least 3 years of experience in a management role.</li>
+		                                <li><i class="fa fa-angle-right text-primary me-2"></i>Strong leadership skills with the ability to inspire and motivate a team to deliver outstanding results.</li>
+		                                <li><i class="fa fa-angle-right text-primary me-2"></i>Excellent communication skills, both verbal and written, with the ability to present and communicate effectively with all levels of an organization.</li>
+		                                <li><i class="fa fa-angle-right text-primary me-2"></i>Strong analytical skills with the ability to interpret data and make informed decisions.</li>
+		                            </ul>
+		                        </div>
+		        
+		                        <div class="">
+		                            <h4 class="mb-4"> For The Job </h4>
+		                            
+									<div style = "margin-left: 300px;"> <h4 class="mb-4" ><a href="/candidateregister">Apply For The Job</a></h4></div>
+		                        </div>
+		                    </div>
+		        
+		                    <div class="col-lg-4">
+		                        <div class="bg-light rounded p-5 mb-4 wow slideInUp" data-wow-delay="0.1s">
+		                            <h4 class="mb-4">Job Summary</h4>
+		                            <p><i class="fa fa-angle-right text-primary me-2"></i>Published On: 01 Jan, 2025</p>
+		                            <p><i class="fa fa-angle-right text-primary me-2"></i>Vacancy: 123 Position</p>
+		                            <p><i class="fa fa-angle-right text-primary me-2"></i>Job Nature: Full Time</p>
+		                            <p><i class="fa fa-angle-right text-primary me-2"></i>Salary: Rs40,000-Rs1,00,000</p>
+		                            <p><i class="fa fa-angle-right text-primary me-2"></i>Location: Bhubaneswar,India</p>
+		                            <p class="m-0"><i class="fa fa-angle-right text-primary me-2"></i>Date Line: 10 dec, 2025</p>
+		                        </div>
+		                        <div class="bg-light rounded p-5 wow slideInUp" data-wow-delay="0.1s">
+		                            <h4 class="mb-4">Company Detail</h4>
+		                            <p class="m-0">Hindustan Unilever Limited (HUL) is one of India's largest consumer goods companies, with a portfolio of products that includes popular brands such as Dove, Surf Excel, Lipton, and Axe. As a large and well-established company, HUL likely has a team of marketing professionals, including a marketing manager or director, who are responsible for developing and implementing marketing strategies to promote its products and brand in the Indian market.</p>
+		                        </div>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+				<div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+						            <div class="container">
+						                <div class="row gy-5 gx-4">
+						                    <div class="col-lg-8">
+						                        <div class="d-flex align-items-center mb-5">
+						                            <img class="flex-shrink-0 img-fluid border rounded" src="img/com-logo-2.jpg" alt="" style="width: 80px; height: 80px;">
+						                            <div class="text-start ps-4">
+						                                <h3 class="mb-3">Product Designer </h3>
+						                                <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>Bhubaneswar,India</span>
+						                                <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i>Full Time</span>
+						                                <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i>Rs40,000-Rs1,00,000</span>
+						                            </div>
+						                        </div>
+
+						                        <div class="mb-5">
+						                            <h4 class="mb-3">Job description</h4>
+						                            <p>The Marketing Manager will be responsible for developing and implementing marketing strategies to promote our company's products and services. The successful candidate will lead a team of marketing professionals and work closely with cross-functional teams to develop and execute campaigns that will drive brand awareness, engagement, and revenue growth.</p>
+						                            <h4 class="mb-3">Responsibility</h4>
+						                            <!-- <p>Magna et elitr diam sed lorem. Diam diam stet erat no est est. Accusam sed lorem stet voluptua sit sit at stet consetetur, takimata at diam kasd gubergren elitr dolor</p> -->
+						                            <ul class="list-unstyled">
+						                                <li><i class="fa fa-angle-right text-primary me-2"></i>Develop and execute comprehensive marketing plans and strategies to achieve company goals and objectives.</li>
+						                                <li><i class="fa fa-angle-right text-primary me-2"></i>Lead the development and implementation of marketing campaigns across multiple channels, including social media, email marketing, advertising, events, and PR.</li>
+						                                <li><i class="fa fa-angle-right text-primary me-2"></i>Create and manage the marketing budget, ensuring maximum return on investment.</li>
+						                                <li><i class="fa fa-angle-right text-primary me-2"></i>Manage and mentor a team of marketing professionals to deliver high-quality campaigns and content that align with the company's vision and goals.</li>
+						                                <li><i class="fa fa-angle-right text-primary me-2"></i>Collaborate with cross-functional teams, including sales, product development, and customer service, to ensure marketing initiatives are integrated with business strategies and objectives.</li>
+						                            </ul>
+						                            <h4 class="mb-3">Qualifications</h4>
+						                            <!-- <p>Magna et elitr diam sed lorem. Diam diam stet erat no est est. Accusam sed lorem stet voluptua sit sit at stet consetetur, takimata at diam kasd gubergren elitr dolor</p> -->
+						                            <ul class="list-unstyled">
+						                                <li><i class="fa fa-angle-right text-primary me-2"></i>Bachelor's degree in Marketing, Business, or a related field.</li>
+						                                <li><i class="fa fa-angle-right text-primary me-2"></i>5+ years of experience in marketing, with at least 3 years of experience in a management role.</li>
+						                                <li><i class="fa fa-angle-right text-primary me-2"></i>Strong leadership skills with the ability to inspire and motivate a team to deliver outstanding results.</li>
+						                                <li><i class="fa fa-angle-right text-primary me-2"></i>Excellent communication skills, both verbal and written, with the ability to present and communicate effectively with all levels of an organization.</li>
+						                                <li><i class="fa fa-angle-right text-primary me-2"></i>Strong analytical skills with the ability to interpret data and make informed decisions.</li>
+						                            </ul>
+						                        </div>
+						        
+						                        <div class="">
+						                           <div style = "margin-left: 300px;"> <h4 class="mb-4" ><a href="/candidateregister">Apply For The Job</a></h4></div>
+						                         
+													
+						                        </div>
+						                    </div>
+						        
+						                    <div class="col-lg-4">
+						                        <div class="bg-light rounded p-5 mb-4 wow slideInUp" data-wow-delay="0.1s">
+						                            <h4 class="mb-4">Job Summery</h4>
+						                            <p><i class="fa fa-angle-right text-primary me-2"></i>Published On: 01 Jan, 2025</p>
+						                            <p><i class="fa fa-angle-right text-primary me-2"></i>Vacancy: 123 Position</p>
+						                            <p><i class="fa fa-angle-right text-primary me-2"></i>Job Nature: Full Time</p>
+						                            <p><i class="fa fa-angle-right text-primary me-2"></i>Salary: Rs40,000-Rs1,00,000</p>
+						                            <p><i class="fa fa-angle-right text-primary me-2"></i>Location: Bhubaneswar,India</p>
+						                            <p class="m-0"><i class="fa fa-angle-right text-primary me-2"></i>Date Line: 10 dec, 2025</p>
+						                        </div>
+						                        <div class="bg-light rounded p-5 wow slideInUp" data-wow-delay="0.1s">
+						                            <h4 class="mb-4">Company Detail</h4>
+						                            <p class="m-0">Hindustan Unilever Limited (HUL) is one of India's largest consumer goods companies, with a portfolio of products that includes popular brands such as Dove, Surf Excel, Lipton, and Axe. As a large and well-established company, HUL likely has a team of marketing professionals, including a marketing manager or director, who are responsible for developing and implementing marketing strategies to promote its products and brand in the Indian market.</p>
+						                        </div>
+						                    </div>
+						                </div>
+						            </div>
+						        </div>
+								<div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+										            <div class="container">
+										                <div class="row gy-5 gx-4">
+										                    <div class="col-lg-8">
+										                        <div class="d-flex align-items-center mb-5">
+										                            <img class="flex-shrink-0 img-fluid border rounded" src="img/com-logo-1.jpg" alt="" style="width: 80px; height: 80px;">
+										                            <div class="text-start ps-4">
+										                                <h3 class="mb-3">Wordpress Developer</h3>
+										                                <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>Bhubaneswar,India</span>
+										                                <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i>Full Time</span>
+										                                <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i>Rs40,000-Rs1,00,000</span>
+										                            </div>
+										                        </div>
+
+										                        <div class="mb-5">
+										                            <h4 class="mb-3">Job description</h4>
+										                            <p>The Marketing Manager will be responsible for developing and implementing marketing strategies to promote our company's products and services. The successful candidate will lead a team of marketing professionals and work closely with cross-functional teams to develop and execute campaigns that will drive brand awareness, engagement, and revenue growth.</p>
+										                            <h4 class="mb-3">Responsibility</h4>
+										                            <!-- <p>Magna et elitr diam sed lorem. Diam diam stet erat no est est. Accusam sed lorem stet voluptua sit sit at stet consetetur, takimata at diam kasd gubergren elitr dolor</p> -->
+										                            <ul class="list-unstyled">
+										                                <li><i class="fa fa-angle-right text-primary me-2"></i>Develop and execute comprehensive marketing plans and strategies to achieve company goals and objectives.</li>
+										                                <li><i class="fa fa-angle-right text-primary me-2"></i>Lead the development and implementation of marketing campaigns across multiple channels, including social media, email marketing, advertising, events, and PR.</li>
+										                                <li><i class="fa fa-angle-right text-primary me-2"></i>Create and manage the marketing budget, ensuring maximum return on investment.</li>
+										                                <li><i class="fa fa-angle-right text-primary me-2"></i>Manage and mentor a team of marketing professionals to deliver high-quality campaigns and content that align with the company's vision and goals.</li>
+										                                <li><i class="fa fa-angle-right text-primary me-2"></i>Collaborate with cross-functional teams, including sales, product development, and customer service, to ensure marketing initiatives are integrated with business strategies and objectives.</li>
+										                            </ul>
+										                            <h4 class="mb-3">Qualifications</h4>
+										                            <!-- <p>Magna et elitr diam sed lorem. Diam diam stet erat no est est. Accusam sed lorem stet voluptua sit sit at stet consetetur, takimata at diam kasd gubergren elitr dolor</p> -->
+										                            <ul class="list-unstyled">
+										                                <li><i class="fa fa-angle-right text-primary me-2"></i>Bachelor's degree in Marketing, Business, or a related field.</li>
+										                                <li><i class="fa fa-angle-right text-primary me-2"></i>5+ years of experience in marketing, with at least 3 years of experience in a management role.</li>
+										                                <li><i class="fa fa-angle-right text-primary me-2"></i>Strong leadership skills with the ability to inspire and motivate a team to deliver outstanding results.</li>
+										                                <li><i class="fa fa-angle-right text-primary me-2"></i>Excellent communication skills, both verbal and written, with the ability to present and communicate effectively with all levels of an organization.</li>
+										                                <li><i class="fa fa-angle-right text-primary me-2"></i>Strong analytical skills with the ability to interpret data and make informed decisions.</li>
+										                            </ul>
+										                        </div>
+										        
+										                        <div class="">
+										                            <div style = "margin-left: 300px;"> <h4 class="mb-4" ><a href="/candidateregister">Apply For The Job</a></h4></div>
+										                            
+										                        </div>
+										                    </div>
+										        
+										                    <div class="col-lg-4">
+										                        <div class="bg-light rounded p-5 mb-4 wow slideInUp" data-wow-delay="0.1s">
+										                            <h4 class="mb-4">Job Summery</h4>
+										                            <p><i class="fa fa-angle-right text-primary me-2"></i>Published On: 01 Jan, 2025</p>
+										                            <p><i class="fa fa-angle-right text-primary me-2"></i>Vacancy: 123 Position</p>
+										                            <p><i class="fa fa-angle-right text-primary me-2"></i>Job Nature: Full Time</p>
+										                            <p><i class="fa fa-angle-right text-primary me-2"></i>Salary: Rs40,000-Rs1,00,000</p>
+										                            <p><i class="fa fa-angle-right text-primary me-2"></i>Location: Bhubaneswar,India</p>
+										                            <p class="m-0"><i class="fa fa-angle-right text-primary me-2"></i>Date Line: 10 dec, 2025</p>
+										                        </div>
+										                        <div class="bg-light rounded p-5 wow slideInUp" data-wow-delay="0.1s">
+										                            <h4 class="mb-4">Company Detail</h4>
+										                            <p class="m-0">Hindustan Unilever Limited (HUL) is one of India's largest consumer goods companies, with a portfolio of products that includes popular brands such as Dove, Surf Excel, Lipton, and Axe. As a large and well-established company, HUL likely has a team of marketing professionals, including a marketing manager or director, who are responsible for developing and implementing marketing strategies to promote its products and brand in the Indian market.</p>
+										                        </div>
+										                    </div>
+										                </div>
+										            </div>
+										        </div>
+												<div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+														            <div class="container">
+														                <div class="row gy-5 gx-4">
+														                    <div class="col-lg-8">
+														                        <div class="d-flex align-items-center mb-5">
+														                            <img class="flex-shrink-0 img-fluid border rounded" src="img/com-logo-2.jpg" alt="" style="width: 80px; height: 80px;">
+														                            <div class="text-start ps-4">
+														                                <h3 class="mb-3">System Developer</h3>
+														                                <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>Bhubaneswar,India</span>
+														                                <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i>Full Time</span>
+														                                <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i>Rs40,000-Rs1,00,000</span>
+														                            </div>
+														                        </div>
+
+														                        <div class="mb-5">
+														                            <h4 class="mb-3">Job description</h4>
+														                            <p>The Marketing Manager will be responsible for developing and implementing marketing strategies to promote our company's products and services. The successful candidate will lead a team of marketing professionals and work closely with cross-functional teams to develop and execute campaigns that will drive brand awareness, engagement, and revenue growth.</p>
+														                            <h4 class="mb-3">Responsibility</h4>
+														                            <!-- <p>Magna et elitr diam sed lorem. Diam diam stet erat no est est. Accusam sed lorem stet voluptua sit sit at stet consetetur, takimata at diam kasd gubergren elitr dolor</p> -->
+														                            <ul class="list-unstyled">
+														                                <li><i class="fa fa-angle-right text-primary me-2"></i>Develop and execute comprehensive marketing plans and strategies to achieve company goals and objectives.</li>
+														                                <li><i class="fa fa-angle-right text-primary me-2"></i>Lead the development and implementation of marketing campaigns across multiple channels, including social media, email marketing, advertising, events, and PR.</li>
+														                                <li><i class="fa fa-angle-right text-primary me-2"></i>Create and manage the marketing budget, ensuring maximum return on investment.</li>
+														                                <li><i class="fa fa-angle-right text-primary me-2"></i>Manage and mentor a team of marketing professionals to deliver high-quality campaigns and content that align with the company's vision and goals.</li>
+														                                <li><i class="fa fa-angle-right text-primary me-2"></i>Collaborate with cross-functional teams, including sales, product development, and customer service, to ensure marketing initiatives are integrated with business strategies and objectives.</li>
+														                            </ul>
+														                            <h4 class="mb-3">Qualifications</h4>
+														                            <!-- <p>Magna et elitr diam sed lorem. Diam diam stet erat no est est. Accusam sed lorem stet voluptua sit sit at stet consetetur, takimata at diam kasd gubergren elitr dolor</p> -->
+														                            <ul class="list-unstyled">
+														                                <li><i class="fa fa-angle-right text-primary me-2"></i>Bachelor's degree in Marketing, Business, or a related field.</li>
+														                                <li><i class="fa fa-angle-right text-primary me-2"></i>5+ years of experience in marketing, with at least 3 years of experience in a management role.</li>
+														                                <li><i class="fa fa-angle-right text-primary me-2"></i>Strong leadership skills with the ability to inspire and motivate a team to deliver outstanding results.</li>
+														                                <li><i class="fa fa-angle-right text-primary me-2"></i>Excellent communication skills, both verbal and written, with the ability to present and communicate effectively with all levels of an organization.</li>
+														                                <li><i class="fa fa-angle-right text-primary me-2"></i>Strong analytical skills with the ability to interpret data and make informed decisions.</li>
+														                            </ul>
+														                        </div>
+														        
+														                        <div class="">
+														                            <div style = "margin-left: 300px;"> <h4 class="mb-4" ><a href="/candidateregister">Apply For The Job</a></h4></div>
+														                            
+														                        </div>
+														                    </div>
+														        
+														                    <div class="col-lg-4">
+														                        <div class="bg-light rounded p-5 mb-4 wow slideInUp" data-wow-delay="0.1s">
+														                            <h4 class="mb-4">Job Summery</h4>
+														                            <p><i class="fa fa-angle-right text-primary me-2"></i>Published On: 01 Jan, 2025</p>
+														                            <p><i class="fa fa-angle-right text-primary me-2"></i>Vacancy: 123 Position</p>
+														                            <p><i class="fa fa-angle-right text-primary me-2"></i>Job Nature: Full Time</p>
+														                            <p><i class="fa fa-angle-right text-primary me-2"></i>Salary: Rs40,000-Rs1,00,000</p>
+														                            <p><i class="fa fa-angle-right text-primary me-2"></i>Location: Bhubaneswar,India</p>
+														                            <p class="m-0"><i class="fa fa-angle-right text-primary me-2"></i>Date Line: 10 dec, 2025</p>
+														                        </div>
+														                        <div class="bg-light rounded p-5 wow slideInUp" data-wow-delay="0.1s">
+														                            <h4 class="mb-4">Company Detail</h4>
+														                            <p class="m-0">Hindustan Unilever Limited (HUL) is one of India's largest consumer goods companies, with a portfolio of products that includes popular brands such as Dove, Surf Excel, Lipton, and Axe. As a large and well-established company, HUL likely has a team of marketing professionals, including a marketing manager or director, who are responsible for developing and implementing marketing strategies to promote its products and brand in the Indian market.</p>
+														                        </div>
+														                    </div>
+														                </div>
+														            </div>
+														        </div>
+		        <!-- Job Detail End -->
+
+		
+		
+		<div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
+				           <div class="container py-5">
+				               <div class="row g-5">
+				                   <div class="col-lg-3 col-md-6">
+				                       <h5 class="text-white mb-4">Company</h5>
+				                       <a class="btn btn-link text-white-50" href="about.html">About Us</a>
+				                       <a class="btn btn-link text-white-50" href="contact.html">Contact Us</a>
+				                       <a class="btn btn-link text-white-50" href="index.html">Our Services</a>
+				                       <a class="btn btn-link text-white-50" href="privacy.html">Privacy Policy</a>
+				                       <a class="btn btn-link text-white-50" href="termsAndCondition.html">Terms & Condition</a>
+				                   </div>
+				                   <div class="col-lg-3 col-md-6">
+				                       <h5 class="text-white mb-4">Quick Links</h5>
+				                       <a class="btn btn-link text-white-50" href="about.html">About Us</a>
+				                       <a class="btn btn-link text-white-50" href="contact.html">Contact Us</a>
+				                       <a class="btn btn-link text-white-50" href="index.html">Our Services</a>
+				                       <a class="btn btn-link text-white-50" href="privacy.html">Privacy Policy</a>
+				                       <a class="btn btn-link text-white-50" href="termsAndCondition.html">Terms & Condition</a>
+				                   </div>
+				                   <div class="col-lg-3 col-md-6">
+				                       <h5 class="text-white mb-4">Contact</h5>
+				                       <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Hyderabad,India</p>
+				                       <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+91 8919098112</p>
+				                       <p class="mb-2"><i class="fa fa-envelope me-3"></i>2210030343@klh.edu.in</p>
+				                       <div class="d-flex pt-2">
+				                           <a class="btn btn-outline-light btn-social" href="https://twitter.com/i/flow/login?input_flow_data=%7B%22requested_variant%22%3A%22eyJsYW5nIjoiZW4ifQ%3D%3D%22%7D"><i class="fab fa-twitter"></i></a>
+				                           <a class="btn btn-outline-light btn-social" href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
+				                           <a class="btn btn-outline-light btn-social" href="https://www.youtube.com/"><i class="fab fa-youtube"></i></a>
+				                           <a class="btn btn-outline-light btn-social" href="https://www.linkedin.com/feed/"><i class="fab fa-linkedin-in"></i></a>
+				                       </div>
+				                   </div>
+				                   <div class="col-lg-3 col-md-6">
+				                       <h5 class="text-white mb-4">Sign up</h5>
+				                       <p>Ready to take the next step?</p>
+				                       <p>Create an account or sign in.</p>
+				                       <div class="position-relative mx-auto" style="max-width: 400px;">
+				                           <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="text" placeholder="Enter your email">
+				                           <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
+				                       </div>
+				                   </div>
+				               </div>
+				           </div>
+				           <div class="container">
+				               <div class="copyright">
+				                   <div class="row">
+				                       <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+				                           &copy; <a class="border-bottom" href="">JobStop.com</a>, All Right Reserved. 
+										
+										
+										Designed By <a class="border-bottom" href="">KAKS</a>
+				                       </div>
+				                       <div class="col-md-6 text-center text-md-end">
+				                           <div class="footer-menu">
+				                               <a href="index.html">Home</a>
+				                               <a href="">Cookies</a>
+				                               <a href="">Help</a>
+				                               <a href="faq.html">FAQs</a>
+				                           </div>
+				                       </div>
+				                   </div>
+				               </div>
+				           </div>
+				       </div>
+					   </body>
+		</html>

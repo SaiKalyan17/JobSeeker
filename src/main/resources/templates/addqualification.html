@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.thymeleaf.org" th:replace="base::layout(~{::div})">
+<head>
+<title>Add Qualification</title>
+</head>
+<body>
+
+	<div class="container my-5 p-5" style="border: 1px solid black;">
+		<h4 class="text-center">Add Qualification</h4>
+		<form class="col-md-4 offset-md-4" th:action="@{/addQualification}">
+
+
+			<div class="mb-3">
+				<label for="author" class="form-label">Qualification </label> <input
+					type="text" class="form-control" name="qualification">
+			</div>
+
+
+			<center>
+				<button type="submit" class="btn btn-primary">Add</button>
+			</center>
+		</form>
+	</div>
+
+
+
+</body>
+</html>

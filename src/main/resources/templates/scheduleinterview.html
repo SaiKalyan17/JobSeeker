@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::div})">
+<head>
+    <title>Schedule Interview</title>
+</head>
+<body>
+
+    <div class="container my-5 p-5" style="border: 1px solid black;">
+        <h4 class="text-center">Schedule Interview</h4>
+        <form class="col-md-4 offset-md-4" th:action="@{/scheduleInterview}">
+            <!-- Hidden field to include candidateId in the form data -->
+            <input type="hidden" name="candidateId" th:value="${candidate.id}">
+
+            <div class="mb-3">
+                <label for="interviewTime" class="form-label">Interview Time</label>
+                <input type="datetime-local" class="form-control" name="dateTime" id="interviewTime">
+            </div>
+
+            <center>
+                <button type="submit" class="btn btn-primary">Schedule</button>
+            </center>
+        </form>
+    </div>
+
+</body>
+</html>

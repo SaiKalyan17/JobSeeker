@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.thymeleaf.org" th:replace="base::layout(~{::div})">
+<head>
+    <title>View All Interviews</title>
+</head>
+<body>
+
+<div class="container my-5">
+    <h3 class="text-center mb-4">All Interviews</h3>
+
+    <!-- Display interviews if available -->
+    <div class="row">
+        <div class="col-md-12">
+            <div th:if="${interviews != null and !#lists.isEmpty(interviews)}">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Candidate Name</th>
+                            <th>Candidate Email</th>
+                            <th>Candidate Contact</th>
+                            <th>Recruiter Name</th>
+                            <th>Interview Date & Time</th>
+                            <th>Status</th>
+                            <th>Offer Letter Sent</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="interview : ${interviews}">
+                            <td th:text="${interview.id}">1</td>
+                            <td th:text="${interview.candidate.name}">John Doe</td>
+                            <td th:text="${interview.candidate.email}">john.doe@example.com</td>
+                            <td th:text="${interview.candidate.contact}">123-456-7890</td>
+                            <td th:text="${interview.recruiter.name}">Recruiter Name</td>
+                            <td th:text="${interview.dateTime}">2024-09-15T10:00</td>
+                            <td th:text="${interview.status}">Pending</td>
+                            <td th:text="${interview.isOfferLetterSent}">No</td>
+                            <td>
+                                <div th:if="${interview.status == 'Selected'}">
+                                    <a th:href="@{/delete-interview/{id}(id=${interview.id})}"
+                                       class="btn btn-danger btn-sm">Delete</a>
+                                </div>
+                                <div th:if="${interview.status != 'Selected'}">
+                                    No action available
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div th:if="${interviews == null or #lists.isEmpty(interviews)}" class="alert alert-info" role="alert">
+                No interviews found.
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
